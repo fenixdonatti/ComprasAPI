@@ -2,6 +2,7 @@ package com.estudo.api.model;
 
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,8 +28,13 @@ public class User {
     
     @NotNull(message = "Email should not be null")
     @Email(message = "Email should be valid")
+    @Column(unique = true)
     private String email;
     
     @NotNull(message = "Password should not be null")
     private String password;
+
+    //timestamps
+    private Long createdAt;
+    private Long updatedAt;
 }
