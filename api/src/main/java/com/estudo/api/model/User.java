@@ -1,0 +1,34 @@
+package com.estudo.api.model;
+
+import java.util.UUID;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+@Table(name = "users")
+public class User {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @NotNull(message = "Name should not be null")
+    private String name;
+    
+    @NotNull(message = "Email should not be null")
+    @Email(message = "Email should be valid")
+    private String email;
+    
+    @NotNull(message = "Password should not be null")
+    private String password;
+}
