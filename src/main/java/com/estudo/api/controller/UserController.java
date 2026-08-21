@@ -2,6 +2,8 @@ package com.estudo.api.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,5 +27,14 @@ public class UserController {
 	public ResponseEntity<UserDataDTO> create(@Valid @RequestBody UserCreateDTO userCreateDTO) {
 		UserDataDTO createdUser = userService.saveUser(userCreateDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+	}
+
+	@GetMapping("/users/{email}")
+	public ResponseEntity<UserDataDTO> get(@PathVariable String email) {
+		UserDataDTO user = userService.getUserByEmail(email);
+		if (user != null) {
+			return ResponseEntity.ok(user);
+		}
+		return ResponseEntity.notFound().build();
 	}
 }

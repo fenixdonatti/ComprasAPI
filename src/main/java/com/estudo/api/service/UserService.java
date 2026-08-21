@@ -19,12 +19,24 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public UserDataDTO saveUser(UserCreateDTO userCreateDTO) {
+        long currentTimestamp = System.currentTimeMillis();
         User user = new User();
+        
         user.setName(userCreateDTO.getName());
         user.setEmail(userCreateDTO.getEmail());
         user.setPassword(passwordEncoder.encode(userCreateDTO.getPassword()));
+        user.setCreatedAt(currentTimestamp);
+        user.setUpdatedAt(currentTimestamp);
 
         User savedUser = userRepository.save(user);
         return new UserDataDTO(savedUser.getName(), savedUser.getEmail());
+    }
+
+    public UserDataDTO getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            return new UserDataDTO(user.getName(), user.getEmail());
+        }
+        return null;
     }
 }
