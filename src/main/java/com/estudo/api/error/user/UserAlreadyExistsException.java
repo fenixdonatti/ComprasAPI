@@ -1,4 +1,4 @@
-package com.estudo.api.error;
+package com.estudo.api.error.user;
 
 public class UserAlreadyExistsException extends Exception {
     public UserAlreadyExistsException(String message) {

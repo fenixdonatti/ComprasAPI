@@ -15,11 +15,11 @@ import java.util.UUID;
 import com.estudo.api.dto.user.UserCreateDTO;
 import com.estudo.api.dto.user.UserDataDTO;
 import com.estudo.api.dto.user.UserUpdateDTO;
-import com.estudo.api.error.UserAlreadyExistsException;
-import com.estudo.api.error.UserCreateException;
-import com.estudo.api.error.UserDeleteException;
-import com.estudo.api.error.UserNotFoundException;
-import com.estudo.api.error.UserUpdateException;
+import com.estudo.api.error.user.UserAlreadyExistsException;
+import com.estudo.api.error.user.UserCreateException;
+import com.estudo.api.error.user.UserDeleteException;
+import com.estudo.api.error.user.UserNotFoundException;
+import com.estudo.api.error.user.UserUpdateException;
 import com.estudo.api.service.UserService;
 
 import jakarta.validation.Valid;
