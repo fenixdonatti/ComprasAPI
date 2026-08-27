@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.estudo.api.dto.product.ProductDataDTO;
 import com.estudo.api.dto.user.UserDataDTO;
-import com.estudo.api.model.Product;
-import com.estudo.api.model.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,7 @@
 package com.estudo.api.model;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
