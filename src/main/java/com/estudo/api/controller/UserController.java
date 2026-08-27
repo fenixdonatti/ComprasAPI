@@ -47,10 +47,10 @@ public class UserController {
 		}
 	}
 
-	@GetMapping("/users/{email}")
-	public ResponseEntity<UserDataDTO> get(@PathVariable String email) {
+	@GetMapping("/users/{uuid}")
+	public ResponseEntity<UserDataDTO> getUserByUUID(@PathVariable String uuid) {
 		try {
-			UserDataDTO user = userService.getUserByEmail(email);
+			UserDataDTO user = userService.getUserByUUID(uuid);
 			return ResponseEntity.ok(user);
 		} catch (UserNotFoundException e) {
 			return ResponseEntity.notFound().build();
@@ -58,7 +58,7 @@ public class UserController {
 			return ResponseEntity.internalServerError().build();
 		}
 	}
-
+	
 	@PutMapping("/users")
 	public ResponseEntity<UserUpdateDTO> update(@Valid @RequestBody UserUpdateDTO userUpdateDTO) {
 		try {
