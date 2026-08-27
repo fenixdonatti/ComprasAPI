@@ -36,7 +36,7 @@ public class UserService {
 
         long currentTimestamp = System.currentTimeMillis();
         User user = new User();
-        
+
         user.setName(userCreateDTO.getName());
         user.setEmail(userCreateDTO.getEmail());
         user.setPassword(passwordEncoder.encode(userCreateDTO.getPassword()));
@@ -59,6 +59,12 @@ public class UserService {
             throw new UserNotFoundException("User not found");
         }
         return new UserDataDTO(user.getName(), user.getEmail());
+    }
+
+    public UserDataDTO getUserByUUID(String uuid) throws UserNotFoundException {
+        return userRepository.findById(UUID.fromString(uuid))
+            .map(user -> new UserDataDTO(user.getName(), user.getEmail()))
+            .orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
     public UserUpdateDTO updateUser(UserUpdateDTO data)
